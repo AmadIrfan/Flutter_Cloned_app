@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_instagram/model_view/firestore_methods.dart';
 import 'package:flutter_instagram/model_view/provider/user_provider.dart';
 import 'package:flutter_instagram/res/colors.dart';
 import 'package:flutter_instagram/view/splash_view.dart';
 import 'package:provider/provider.dart';
-
 import './model_view/model/auth_methods.dart';
 
 void main() async {
