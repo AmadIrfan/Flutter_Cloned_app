@@ -67,7 +67,7 @@ class _SplashScreenState extends State<SplashScreen> {
               height: 24.0,
             ),
             // const    Text(
-            //       'Instagram',
+              //       'Instagram',
             //       style: TextStyle(
             //         fontSize: 24.0,
             //         fontWeight: FontWeight.bold,

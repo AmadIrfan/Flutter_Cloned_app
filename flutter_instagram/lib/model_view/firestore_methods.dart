@@ -21,8 +21,6 @@ class FireStoreMethost with ChangeNotifier {
     Reference ref = _storage.ref().child(path).child(_auth.currentUser!.uid);
     UploadTask uploadTask = ref.putFile(file);
     await Future.value(uploadTask);
-    // TaskSnapshot sp = await uploadTask;
-    // String link = await sp.ref.getDownloadURL();
     String link = await ref.getDownloadURL();
 
     return link;
@@ -152,19 +150,14 @@ class FireStoreMethost with ChangeNotifier {
 
   Future<void> followUser(String userId, String followerId) async {
     try {
-      print('hitted');
       DocumentSnapshot snap =
           await _firebaseFirestore.collection('users').doc(userId).get();
       List following =
           (snap.data() as Map<String, dynamic>)['following'] as List;
-      print(following.contains(followerId));
       if (following.contains(followerId)) {
-        print('Contained');
         await _firebaseFirestore.collection('users').doc(followerId).update({
           'followers': FieldValue.arrayRemove([userId]),
         });
-        //     'followers'
-        //  'following'
         await _firebaseFirestore.collection('users').doc(userId).update({
           'following': FieldValue.arrayRemove([followerId]),
         });
@@ -177,7 +170,7 @@ class FireStoreMethost with ChangeNotifier {
         });
       }
     } catch (e) {
-      print(e.toString());
+      e;
     }
   }
 }
